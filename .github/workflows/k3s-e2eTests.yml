@@ -4,13 +4,14 @@ on: [push, pull_request]
 
 env:
   ARCH: amd64
-  GO_VERSION: "1.21"
+  GO_VERSION: "1.22"
   KUBECONFIG: ${HOME}/.kube/config
 
 jobs:
   k3s-e2e-tests:
     name: test
     runs-on: ubuntu-latest
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
       - name: Set up Go 1.x
